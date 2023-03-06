@@ -37,5 +37,5 @@ jobs:
       run: |
         .\TellJiraBitBucketBuildIsDone.exe "hellow world"
         
-        #.\DesigniteConsole\DesigniteConsole.exe -ci -repo ${{github.repository}} -pat ${{ secrets.PAT }} -k ${{ secrets.D_KEY }}
+        ##.\DesigniteConsole\DesigniteConsole.exe -ci -repo ${{github.repository}} -pat ${{ secrets.PAT }} -k ${{ secrets.D_KEY }}
         #cat Designite_output/DesigniteAnalysis.xml

@@ -1,0 +1,41 @@
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in paralle
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    #- name: Run a one-line script
+    #  run: Invoke-webrequest -uri  https://aka.ms/vs/15/release/vs_buildtools.exe -OutFile vs_buildtools.exe
+    #  shell: powershell
+
+    #- name: install build tools
+    #  run: .\vs_buildtools.exe --wait --norestart --passive --installPath "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools" --add Microsoft.VisualStudio.Workload.ManagedDesktopBuildTools --add Microsoft.VisualStudio.Workload.MSBuildTools
+    #  shell: cmd
+    
+    # Runs a set of commands using the runners shell
+    #- name: download DesigniteConsole.exe
+    #  run: |
+    #    curl.exe -o DesigniteConsole.zip "<download link>"
+    #    powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory('DesigniteConsole.zip','.');}"
+    
+    - name: Run Designite application (it utilizes GitHub secrets and environment variables)
+      run: |
+        .\TellJiraBitBucketBuildIsDone.exe "hellow world"
+        
+        ##.\DesigniteConsole\DesigniteConsole.exe -ci -repo ${{github.repository}} -pat ${{ secrets.PAT }} -k ${{ secrets.D_KEY }}
+        #cat Designite_output/DesigniteAnalysis.xml
